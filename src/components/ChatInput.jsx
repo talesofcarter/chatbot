@@ -37,8 +37,9 @@ const ChatInput = ({ chatMessages, setChatMessages }) => {
   }
 
   return (
-    <section>
+    <section className="chat-input-container">
       <input
+        id="send-message"
         type="text"
         placeholder="Send a message to Chatbot"
         size="30"

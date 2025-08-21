@@ -1,3 +1,4 @@
+import Header from "./components/Header";
 import ChatInput from "./components/ChatInput";
 import ChatMessage from "./components/ChatMessage";
 import { useState } from "react";
@@ -39,13 +40,16 @@ function App() {
   );
 
   return (
-    <div>
-      <ChatInput
-        chatMessages={chatMessages}
-        setChatMessages={setChatMessages}
-      />
-      {chatMessageComponents}
-    </div>
+    <main>
+      <Header />
+      <div className="app-container">
+        <ChatInput
+          chatMessages={chatMessages}
+          setChatMessages={setChatMessages}
+        />
+        {chatMessageComponents}
+      </div>
+    </main>
   );
 }
 
