@@ -4,14 +4,20 @@ import { faRobot } from "@fortawesome/free-solid-svg-icons";
 
 const ChatMessage = ({ message, sender }) => {
   return (
-    <div>
+    <div
+      className={
+        sender === "user"
+          ? "chat-message-user"
+          : "chat-message-robot"
+      }
+    >
       {sender === "robot" && (
         <FontAwesomeIcon
           className="robot-icon"
           icon={faRobot}
         />
       )}
-      {message}
+      <div className="chat-message-text">{message}</div>
       {sender === "user" && (
         <FaUser className="profile-icon" />
       )}

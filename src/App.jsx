@@ -43,11 +43,13 @@ function App() {
     <main>
       <Header />
       <div className="app-container">
+        <div className="chat-messages-container">
+          {chatMessageComponents}
+        </div>
         <ChatInput
           chatMessages={chatMessages}
           setChatMessages={setChatMessages}
         />
-        {chatMessageComponents}
       </div>
     </main>
   );
