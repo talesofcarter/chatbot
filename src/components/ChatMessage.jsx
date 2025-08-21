@@ -12,7 +12,9 @@ const ChatMessage = ({ message, sender }) => {
         />
       )}
       {message}
-      {sender === "user" && <FaUser className="profile-icon" />}
+      {sender === "user" && (
+        <FaUser className="profile-icon" />
+      )}
     </div>
   );
 };
