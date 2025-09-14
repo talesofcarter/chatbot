@@ -1,9 +1,10 @@
 import Header from "./components/Header";
 import ChatInput from "./components/ChatInput";
 import ChatMessage from "./components/ChatMessage";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function App() {
+  const chatMessagesRef = useRef(null);
   const [chatMessages, setChatMessages] = useState([
     {
       id: "id1",
@@ -27,23 +28,28 @@ function App() {
     },
   ]);
 
-  const chatMessageComponents = chatMessages.map(
-    (chatMessage) => {
-      return (
-        <ChatMessage
-          key={chatMessage.id}
-          message={chatMessage.message}
-          sender={chatMessage.sender}
-        />
-      );
+  useEffect(() => {
+    const containerElem = chatMessagesRef.current;
+    if (containerElem) {
+      containerElem.scrollTop = containerElem.scrollHeight;
     }
-  );
+  }, [chatMessages]);
+
+  const chatMessageComponents = chatMessages.map((chatMessage) => {
+    return (
+      <ChatMessage
+        key={chatMessage.id}
+        message={chatMessage.message}
+        sender={chatMessage.sender}
+      />
+    );
+  });
 
   return (
     <main>
       <Header />
       <div className="app-container">
-        <div className="chat-messages-container">
+        <div className="chat-messages-container" ref={chatMessagesRef}>
           {chatMessageComponents}
         </div>
         <ChatInput
